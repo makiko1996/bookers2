@@ -1,5 +1,5 @@
 <h1>User info</h1>
-<%= attachment_image_tag @user, :user_image, :fill, 63, 63, fallback: "no_image.jpg", size: '63x63' %>
+<%= attachment_image_tag @user, :profile_image, :fill, 63, 63, fallback: "no_image.jpg", size: '63x63' %>
 <table>
   <tr><th>name</th><td><%= @user.name %></td></tr>
   <tr><th>introduction</th><td><%= @user.introduction %></td></tr>
@@ -30,11 +30,13 @@
     
     <tbody>
       <% @books.each do |book| %>
-       <tr>
-         <td><%= attachment_image_tag @user, :user_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40' %></td>
-         <td><%= book.title %></td>
-         <td><%= book.opinion %></td>
-       </tr>
+     　<% if book.user_id == @user.id %>
+        <tr>
+          <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40' %></td>
+          <td><%= book.title %></td>
+          <td><%= book.opinion %></td>
+        </tr>
+       <% end %>
       <% end %>
     </tbody>
   </table>

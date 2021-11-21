@@ -25,7 +25,7 @@
     <tbody>
        <tr>
          <td>
-           <%= attachment_image_tag @user, :user_image, :fill, 63, 63, fallback: "no_image.jpg", size: '63x63' %></br>
+           <%= attachment_image_tag @user, :profile_image, :fill, 63, 63, fallback: "no_image.jpg", size: '63x63' %></br>
            <%= link_to @user.name, user_path(@user) %>
          </td>
          <td><%= @book.title %></td>

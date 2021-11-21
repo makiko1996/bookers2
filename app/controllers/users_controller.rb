@@ -5,7 +5,12 @@ class UsersController < ApplicationController
     @book = Book.new
   end
   
-  
+  def index
+    @book = Book.new
+    @users = User.all
+    @current_user = current_user
+    
+  end
 
   
 end
