@@ -1,5 +1,22 @@
 <body>
-
+  <% if @book.errors.any? %>
+   <%= @book.errors.count %>error prohibited this book from being saved:
+   <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+   <% end %>
+  <% end %>
+  
+  
+  <h1>User info</h1>
+  <%= attachment_image_tag @current_user, :profile_image, :fill, 63, 63, fallback: "no_image.jpg", size: '63x63' %>
+  <table>
+   <tr><th>name</th><td><%= @current_user.name %></td></tr>
+   <tr><th>introduction</th><td><%= @current_user.introduction %></td></tr>
+  </table>
+  <% if @user == @current_user %>
+   <%= link_to 'edit', edit_user_path(current_user) %>
+  <% end %> 
+  
   <h1>New book</h1>
   <%= form_with model: @new_book, local:true do |f| %>
     <h4>Title</h4>

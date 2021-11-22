@@ -1,22 +1,31 @@
-
-<h1>User info</h1>
-<div>
- <%= form_with model:@user, url:user_path(@user), local:true do |f| %>
-   <div>
-    <p>Name</p>
-     <%= f.text_field :name, autofocus: true, id:"inputName" %>
-   </div>
-   <div>
-    <p>Image</p>
-     <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-   </div>
-   <div>
-    <p>Introduction</p>
-     <%= f.text_area :introduction %>
-     <%= f.submit 'Update User' %>
-   </div>
+<body>
  
+ <% if @user.errors.any? %>
+  <%= @user.errors.count %>error prohibited this book from being saved:
+  <% @user.errors.full_messages.each do |message| %>
+   <%= message %>
+  <% end %>
  <% end %>
-</div>
+ 
+ <h1>User info</h1>
+ <div>
+  <%= form_with model:@user, url:user_path(@user), local:true do |f| %>
+    <div>
+     <p>Name</p>
+      <%= f.text_field :name, autofocus: true, id:"inputName" %>
+    </div>
+    <div>
+     <p>Image</p>
+      <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+    </div>
+    <div>
+     <p>Introduction</p>
+      <%= f.text_area :introduction %>
+      <%= f.submit 'Update User' %>
+    </div>
+  
+  <% end %>
+ </div>
+</body>
 
 

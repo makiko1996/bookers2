@@ -1,10 +1,18 @@
 <body>
+  <% if @book.errors.any? %>
+   <%= @book.errors.count %>error prohibited this book from being saved:
+   <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+   <% end %>
+<% end %>
+  
   
   <div class="container px-5 px-sm-0">
     <div class="row">
       
       <div class="col-md-3">
-  
+        
+          
         <h1>User info</h1>
          <%= attachment_image_tag @current_user, :profile_image, :fill, 63, 63, fallback: "no_image.jpg", size: '63x63' %>
          <table class="table">
