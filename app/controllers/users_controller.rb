@@ -4,12 +4,12 @@ class UsersController < ApplicationController
     @books = Book.all
     @book = Book.new
   end
+
   
   def index
     @book = Book.new
     @users = User.all
     @current_user = current_user
-    
   end
   
   def edit

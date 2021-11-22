@@ -1,6 +1,8 @@
 <body>
-
-  <h1>EditingBook</h1>
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h1>Editing Book</h1>
   <% if @book.errors.any? %>
    <%= @book.errors.count %>error prohibited this book from being saved:
    <% @book.errors.full_messages.each do |message| %>
@@ -22,7 +24,11 @@
     <%= f.submit 'Update Book' %>
    </div> 
   <% end %>
-  <!--show url check-->
-  <%= link_to "Show", book_path(@book) %>'|'<%= link_to "back", books_path %>
+  <%= link_to "Show", book_path(@book) %>|<%= link_to "Back", books_path %>
+    
+   </div>
+  </div>
+ </div>
+  
  
 </body>

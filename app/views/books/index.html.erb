@@ -4,7 +4,7 @@
    <% @book.errors.full_messages.each do |message| %>
     <%= message %>
    <% end %>
-<% end %>
+  <% end %>
   
   
   <div class="container px-5 px-sm-0">
@@ -19,7 +19,7 @@
           <tr><th>name</th><td><%= @current_user.name %></td></tr>
           <tr><th>introduction</th><td><%= @current_user.introduction %></td></tr>
          </table>
-         <%= link_to 'edit', edit_user_path(current_user) %>
+         <%= link_to 'edit', edit_user_path(current_user), class:"btn btn-outline-secondary btn-blok fas fa-user-cog" %>
               
          <h1>New book</h1>
          <%= form_with model: @book, local:true do |f| %>
