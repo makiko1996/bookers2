@@ -7,7 +7,7 @@
   <% end %>
     <div class="container px-5 px-sm-0">
       <div class="row">
-      
+
         <div class="col-md-3">
           <h1>User info</h1>
           <%= attachment_image_tag @user, :profile_image, :fill, 63, 63, fallback: "no_image.jpg", size: '63x63' %>
@@ -15,13 +15,10 @@
             <tr><th>name</th><td><%= @user.name %></td></tr>
             <tr><th>introduction</th><td><%= @user.introduction %></td></tr>
           </table>
-          <% if @user == current_user %>
-           <%= link_to 'edit', edit_user_path(), class:"btn btn-outline-secondary btn-blok fas fa-user-cog" %>
-          <% else %>
-           <%= link_to 'edit', books_path, class:"btn btn-outline-secondary btn-blok fas fa-user-cog" %>
-          <% end %>
           
+          <%= link_to 'edit', edit_user_path(@user), class:"btn btn-outline-secondary btn-blok fas fa-user-cog" %>
           
+
           <h1>New book</h1>
             <%= form_with model: @book, local:true do |f| %>
               <h4>Title</h4>
@@ -33,7 +30,7 @@
         </div>
         <div class="col-md-8 offset-md-1">
           <h1>Books</h1>
-          
+
           <table>
             <thead>
               <tr>
@@ -43,12 +40,15 @@
                 <th></th>
               </tr>
             </thead>
-            
+
             <tbody>
               <% @books.each do |book| %>
              　<% if book.user_id == @user.id %>
                 <tr>
-                  <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40' %></td>
+                  <td>
+                    <%= link_to(user_path(book.user), class: 'list-content') do %>
+                     <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40' %>
+                    <% end %></td>
                   <td><%= link_to book.title, book_path(book) %></td>
                   <td><%= book.body %></td>
                 </tr>

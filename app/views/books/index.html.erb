@@ -5,14 +5,14 @@
     <%= message %>
    <% end %>
   <% end %>
-  
-  
+
+
   <div class="container px-5 px-sm-0">
     <div class="row">
-      
+
       <div class="col-md-3">
-        
-          
+
+
         <h1>User info</h1>
          <%= attachment_image_tag @current_user, :profile_image, :fill, 63, 63, fallback: "no_image.jpg", size: '63x63' %>
          <table class="table">
@@ -20,7 +20,7 @@
           <tr><th>introduction</th><td><%= @current_user.introduction %></td></tr>
          </table>
          <%= link_to 'edit', edit_user_path(current_user), class:"btn btn-outline-secondary btn-blok fas fa-user-cog" %>
-              
+
          <h1>New book</h1>
          <%= form_with model: @book, local:true do |f| %>
            <h4>Title</h4>
@@ -32,7 +32,7 @@
       </div>
       <div class="col-md-8 offset-md-1">
          <h1>Books</h1>
-              
+
          <table class="table">
           <thead>
             <tr>
@@ -41,11 +41,13 @@
               <th>Opinion</th>
              </tr>
            </thead>
-          
+
           <tbody>
             <% @books.each do |book| %>
-             <tr>
-               <td><%= attachment_image_tag @user, :profile_image, :fill, 63, 63, fallback: "no_image.jpg", size: '40x40' %></td>
+             <tr><td>
+            　<%= link_to(user_path(book.user), class: 'list-content') do %>
+               <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size: '40x40' %>
+              <% end %></td>
                <td><%= link_to book.title, book_path(book) %></td>
                <td><%= book.body %></td>
              </tr>
